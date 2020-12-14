@@ -1,0 +1,568 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%    PLANTILLA DE LÁTEX PARA EL ÁMBITO ACADÉMICO   %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                 EL OBJETIVO DE ESTA PLANTILLA ES LA DE PERMITIR UNA                         %%%
+%%%                 CÓMODA REDACCIÓN DE UN DOCUMENTO CON UN FORMATO                             %%%
+%%%                  AGRADABLE SIN NECESIDAD DE INVERTIR TIEMPO EN ELLO                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               LAS INSTRUCCIONES SON LAS SIGUIENTES:                         %%%
+%%%      INTRODUZCA LA INFORMACIÓN BÁSICA SOBRE EL DOCUMENTO EN EL APARTADO QUE ESTÁ MÁS ABAJO  %%%
+%%%                                  (sobre la línea 255)                                       %%%
+%%%     ASEGÚRESE DE DEJAR VACÍOS LOS CAMPOS QUE NO QUIERA MOSTRAR TAL QUE ASÍ: "{}"            %%%
+%%%  ES IMPORTANTE QUE DEFINA LAS SIGLAS DE LA UNIVERSIDAD O CORPORACIÓN SI NO TIENE DEFINIDA   %%%
+%%%                IMAGEN CORPORATIVA, DE OTRA MANERA NO FUNCIONARÁ CORRECTAMENTE              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     SI NECESITA AÑADIR MÁS AUTORES DEBE HACERLO EN LA ZONA MARCADA PARA ELLO                %%%
+%%%                                 (sobre la línea 325)                                        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     A CONTINUACIÓN LIMÍTESE A DEFINIR PARTS, SECTIONS, ETC EN LA ZONA DEFINIDA PARA ELLO    %%%
+%%                          DE LO DEMÁS SE ENCARGARÁ LA PLANTILLA                               %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Plantilla de Latex realizada por Manuel González Costa %
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%   ZONA DE PAQUETES AÑADIDOS, PARA AÑADIR NUEVAS FUNCIONALIDADES
+%________________________________________________
+%Esta línea supone la configuración más básica del documento.
+\documentclass[]{article}
+%Entre las opciones disponibles para poner entre las llaves {} hay las siguientes:
+    %article	Para artículos académicos y otros documentos cortos que no es necesario dividir en 
+                        % capítulos, sino que bastan las secciones y subsecciones y sus párrafos 
+                        % y subpárrafos
+    % book	    Para libros y otros documentos más largos que deben incluir capítulos, prólogo, 
+                        % apéndices o incluso partes.
+    % report	Para informes técnicos. Es similar a la clase book.
+    % memoir	Una clase todoterreno con un buen número de funciones adicionales integradas.
+    % beamer	Otra clase para presentaciones mediante diapositivas.
+
+%Además se pueden incluír opciones entre los corchetes [] separadas por comas.
+%   en caso de no ponerlas se toman las que estén por defecto, las disponibles son:
+    % landscape --------------> Apaisado. Pone la página de forma horizontal. Si se omite queda formato 
+                                % vertical.
+    % 10pt, 11pt, 12pt ------->	Definen el tamaño de la fuente principal del texto.
+    % oneside, twoside  ------>	Indican si el documento debe estar adaptado a impresión por un sólo 
+                                % lado de la página o por ambos lados de ella.
+    % titlepage, notitlepage-->	Determinan si el documento debe o no incluir una página de título, 
+                                %i.e. si va a incluir o no una portada.
+    % openright, openany -----> openright obliga a los capítulos a iniciar siempre sólo en páginas 
+                                % impares, mientras que con la opción openany permitimos que los 
+                                % capítulos se inicien en cualquier página.
+    % onecolumn, twocolumn ---> Definen si el documento se va a escribir en una sola columna o a doble columna.
+    % fleqn ------------------> Esta opción hace que las ecuaciones queden alineadas por la izquierda 
+                                %en lugar de que sean centradas (como sucede por defecto).
+    % leqno ------------------> Con esta opción hacemos que el número de las ecuaciones quede alineado por 
+                                % la izquierda en lugar de por la derecha (como sucede por defecto).
+    % draft, final -----------> La opción draft se usa si queremos que la compilación del documento se haga 
+                                % a modo de "borrador". Con draft haremos que las líneas que sean demasiado 
+                                % largas queden marcadas mediante cajas negras. La opción final producirá 
+                                % simplemente que el documento se compile de manera normal.
+%________________________________________________
+%________________________________________________
+%Este paquete permite que al hacer copy-paste del pdf resultado
+%   se copien correctamente los acentos y caracteres especiales.
+\usepackage[T1]{fontenc} 
+%Si no utilizamos este paquete, aunque en el PDF se vean correctamente
+% las tildes y ñ, cuando seleccionamos y copiamos ese texto realmente
+%   estaremos copiando "\'a" o "\~n" en lugar de á o ñ. Con este paquete
+%   solucionamos ese error.
+%________________________________________________
+%________________________________________________
+%El paquete inputenc permite escribir ACENTOS, Ñ, Y DEMÁS CARACTERES ESPECIALES
+%   directamente en la página de código latex, convirtiéndose 
+%   internamente el texto introducido a texto LaTeX, de acuerdo con las 
+%   diferentes tablas de equivalencia para las distintas páginas de códigos 
+%   y de forma completamente transparente al usuario.
+\usepackage[utf8]{inputenc}   
+%Básicamente nos permite escribir "á" en lugar de "\'a" o "ñ" en lugar de "\~n" etcétera.
+%________________________________________________
+%________________________________________________
+% Este paquete adapta una serie de elementos de los documentos de LATEX al castellano, tanto en
+% las traducciones como en la tipografía. Para usarlo, basta con dar la opción spanish al cargar babel:
+\usepackage[spanish]{babel} 
+%Por ejemplo:
+    %--> poner "Índice" en lugar de "Contents"
+    %--> poner "Resumen" en lugar de "Abstract"
+    %--> poner "Figura" en lugar de "Figure"
+    %--> poner la fecha en español
+    %--> otros...
+%________________________________________________
+%________________________________________________
+%Este paquete nos proporciona herramientas para realizar
+%   dibujos, entre otras funcionalidades
+\usepackage{tikz}
+%Un ejemplo es el siguiente código
+    %\begin{figure}[H!]
+        % \begin{tikzpicture}
+            % \draw (0,0) circle (1cm);    
+            % \draw (-1,0) -- (0,1) -- (1,0) -- (0,-1) -- cycle;    
+        % \end{tikzpicture}
+    %\end{figure}
+%________________________________________________
+%________________________________________________
+%Si estamos usando \usepackage[spanish]{babel} debemos poner esto
+% Para que funcione correctamente el paquete "tikz"
+\usetikzlibrary{babel}
+%Si no lo ponemos falla por interpretar de diferente forma algunos
+%   caracteres como el "<" o ">", presentes en esta línea de ejemplo:
+    %\draw[->] (-1.5,0) -- (1.5,0);
+%________________________________________________
+%________________________________________________
+%Permite la inclusión de figuras
+\usepackage{graphicx}    
+%Se utiliza de la siguiente forma
+    %\begin{figure}[H!]
+    % \centering %Para centrar la figura
+    %% \raggedleft %Para alinear a la derecha
+    %% \raggedright %Para alinear a la izquierda
+        % \includegraphics[angle=0, scale=1, width=\textwidth]{ URL.JPG }
+        % \caption{Pie de figura}
+        % \label{fig:etiqueta}
+    %\end{figure}
+%________________________________________________
+%________________________________________________
+% Nos permite tomar control sobre la ubicación de los gráficos
+\usepackage{float} 
+%Nos permite utilizar la "H" en las opciones de una imagen o tabla 
+%   para obligar a que se posicione donde está colocada en el código
+%Ejemplo:
+    %\begin{figure}[H] 
+%En lugar de
+    %\begin{figure}[htbp] u otras opciones
+%________________________________________________
+%________________________________________________
+ %Permite la inclusión de subfiguras
+\usepackage{subcaption}   
+%Una posible plantilla es la siguiente, que permite
+%   poner tres imágenes en las misma figura
+    %\begin{figure}[H]
+        % \centering
+            % \subfigure[Subfigura 1]{\includegraphics[width=40mm]{URL FIGURA1}} 
+            %\hspace{10mm} %Para espaciar horizontalmente FIG1 de FIG2 si se quiere
+            % \subfigure[Subfigura 2]{\includegraphics[width=40mm]{URL FIGURA2}} 
+            %   \vspace{10mm} %Para espaciar verticalmente FIG 1 Y 2 de FIG3 si se quiere
+            % \subfigure[Subfigura 3]{\includegraphics[width=80mm]{URL FIGURA3}}
+        % \caption{Prueba 3 Subfiguras.} 
+        % \label{fig:pruebaSub}
+    % \end{figure}
+%________________________________________________
+%________________________________________________
+%Permite añadir pies de foto a las subfiguras cómodamente
+\usepackage{caption} 
+%Entre otras cosas permite ejecutar lo siguiente:
+    % \subfigure[Subfigura 1]
+%Añadiendo a la subfigura el pié "Subfigura"
+%________________________________________________
+%________________________________________________
+%Para el encabezado
+\usepackage{fancyhdr}   
+%Añade toda la funcionalidad necesaria para realizar
+%   el header y footer de las páginas
+%________________________________________________
+%________________________________________________
+%Paquete que nos permite definir el tamaño del papel y los bordes
+\usepackage[a4paper,left=3cm,right=3cm,top=4cm,bottom=4cm]{geometry}
+%Como tamaños de papel predefinidos tenemos los siguientes:
+    %   a0paper, a1paper, a2paper, a3paper, a4paper, a5paper, a6paper,
+    %   b0paper, b1paper, b2paper, b3paper, b4paper, b5paper, b6paper, 
+    %   c0paper, c1paper, c2paper, c3paper, c4paper, c5paper, c6paper, 
+    %   b0j, b1j, b2j, b3j, b4j, b5j, b6j, ansiapaper, ansibpaper, 
+    %   ansicpaper, ansidpaper, ansiepaper, letterpaper, executivepaper, legalpaper
+    
+%Además permite definir el tamaño de los bordes y otras variables
+%________________________________________________
+%________________________________________________
+%Para las líneas gruesas de las tablas
+\usepackage{array} 
+%Permite crear tablas como la siguiente, con anchos de línea diferentes
+        % \begin{table}[H]
+        %     \centering
+        %     \begin{tabular}{!{\vrule width 2pt}c!{\vrule width 2pt}c!{\vrule width 2pt}}
+        %         \noalign{\hrule height 2pt}
+        %             \textbf{CASILLA 1.1} & \textbf{CASILLA 1.2}   \\
+        %         \noalign{\hrule height 2pt}
+        %         CASILLA 2.1 & CASILLA 2.2   \\
+        %         \noalign{\hrule height 2pt}
+        %     \end{tabular}
+        % \end{table}
+%________________________________________________
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DEFINIMOS COLORES PARA UTILIZARLOS A LO LARGO DEL DOCUMENTO
+\definecolor{GrisOscuro}{rgb}{0.6,0.6,0.6}
+\definecolor{GrisMedio}{rgb}{0.7,0.7,0.7}
+\definecolor{enlaceAzul}{HTML}{2200CC}
+
+%Para las secciones de código
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%________________________________________________
+%Índice activo, simplemente con usar este paquete cada entrada
+%    del índice se convierte en un hipernelace a su sección
+% Con la opción "hidelinks" hacemos que los links no tengan estilo, crearemos nuestros 
+%   propios links con el estilo que queramos
+\usepackage[hidelinks]{hyperref}
+
+%Creamos un nuevo comando para poder crear hipervínculos con una estética mejorada
+\DeclareRobustCommand{\myhyperref}[2]{\href{#1}{\color{enlaceAzul}\setulcolor{enlaceAzul}\ul{#2}}}
+\DeclareRobustCommand{\myhyperlink}[2]{\hyperlink{#1}{\color{enlaceAzul}\setulcolor{enlaceAzul}\ul{#2}}}   
+%________________________________________________
+%________________________________________________
+%Para meter texto resaltado y que no fallen las tildes 
+%   usando el paquete "soul" falla al resaltar texto con tildes
+\usepackage{soulutf8}   
+%Para resaltar el texto que se desea se utiliza:
+    %\hl{Texto Resaltado}
+%Para cambiar el color del resaltado se utiliza
+    %\sethlcolor{red}
+%Para conseguir otros comandos con diferentes colores (por ejemplo cyan) poner:
+    %\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} 
+%Y ahora disponemos del siguiente comando para resaltar en azul:
+    %\hlcyan{Texto resaltado en azul}
+
+% Nota: sethcolor y DeclareRobustComand (se pueden poner antes del begin(document) o después,
+%   pero es recomendable antes del begin(document)    
+
+% SI SE QUIEREN QUITAR LOS RESALTADOS PARA, POR EJEMPLO, IMPRIMIR EL DOCUMENTO, DESCOMENTAR
+%   LAS SIGUIENTES TRES LÍNEAS
+
+    % \makeatletter
+    % \AtBeginDocument{\let\hl\@firstofone}
+    % \makeatother
+
+%________________________________________________
+%________________________________________________
+%Para cambiar los símbolos de las listas itemize
+\usepackage{enumitem} 
+%Se utilizan de la siguiente manera:
+    %\begin{itemize}[label={--}]
+%________________________________________________
+%________________________________________________
+%Nos permite en cualquier parte del documento tener el título, autor y fecha definidas 
+\usepackage{titling} 
+%Para referenciarlo se utiliza
+    %\thetitle para obtener el título del documento
+    %\theauthor para obtener el autor del documento  (sólo el autor principal, los secundarios no)
+    %\thedate para obtener la fecha del documento (OJO! si usas \today en \date, la pone en inglés)
+%________________________________________________
+%________________________________________________
+%Lo utilizaremos para comprobar los datos del formulario y crear correctamente la portada
+\usepackage{ifthen}
+%Permite hacer lo siguiente:
+    % \newcommand{\card}[1]{
+    % \ifthenelse{\equal{#1}{}}{Empty.}{Nonempty.}
+    % }
+%________________________________________________
+%________________________________________________
+%Con la inclusión de este paquete se consigue que los "footnotes"
+%   se mantengan siempre al final de la página
+\usepackage[bottom]{footmisc}
+%________________________________________________
+%________________________________________________
+%Con el siguiente paquete se configuran las lstlistings que permiten introducir código de programación
+%   a nuestro documento, haciendo que se vea de una manera agradable.
+\usepackage{listings, lstautogobble}
+%Cambiamos la caption o pié de página que aparece en las secciones de código
+\renewcommand{\lstlistingname}{Sección de código} 
+%Damos estilo a los bloques de código
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle,
+    %Se deben escribir aquí todos los caracteres con tildes o caracteres
+    % como la ñ para que sean interpretados correctamente dentro del bloque
+    % de código
+    extendedchars=true,
+    literate=
+    {á}{{\'a}}1 {é}{{\'e}}2 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~n}}1
+    }
+%________________________________________________
+
+%FIN DE LA ZONA DE INCLUSIÓN DE PAQUETES
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+%=======================================================
+%AJUSTES GLOBALES PARA TODO EL DOCUMENTO
+%Para controlar el salto entre párrafos para todo el documento
+\parskip=1em	
+%Creamos un nuevo comando que subraye en azul
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} 
+
+%Niveles de profundidad en Latex
+    % Nivel 0 --> Capítulos.        \chapter{}
+    % Nivel 1 --> Secciones         \section{}
+    % Nivel 2 --> Subsecciones      \subsection{}
+    % Nivel 3 --> Subsubsecciones   \subsubsection{}
+    % Nivel 4 --> Párrafos          \paragraph{} 
+    % Nivel 5 --> Subpárrafos       \subparagraph{}
+%Con la siguiente línea indicamos que numere los \paragraph y \subparagraph también
+\setcounter{secnumdepth}{5}
+
+% Con este comando seleccionamos hasta qué nivel de profundidad queremos que muestre en el índice
+\setcounter{tocdepth}{3} 
+
+%Si queremos empezar a nombrar las secciones en 0 se pondría -1 en la siguiente línea
+\setcounter{section}{0}    
+
+%=======================================================
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%    AQUÍ SE INTRODUCEN LOS METADATOS DEL DOCUMENTO  %%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%  SI NO SE QUIERE UN APARTADO SE DEJA EN BLANCO   %%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%   OJO! UN APARTADO EN BLANCO QUEDARÁ ASÍ: "{}", SIN ESPACIOS    %%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %Deficición de metadatos sobre el documento, que serán mostrados en portada, y en otras partes del documento
+            %Definimos el título del documento
+            \title{Título del documento}
+            %Definimos un subtítulo
+            \newcommand{\subtituloDocumento}{Subtítulo}
+            %Definimos el autor del documento
+            %Si hay más de uno se deben incluír en la portada
+            \author{AUTOR} 
+            %Definimos la fecha del documento (\today para fecha actual, pero no se recomienda)
+            \date{ 23 de marzo de 2020 }
+            %Definimos Materia e univesidad
+            \newcommand{\materia}{Materia}
+            \newcommand{\universidad}{Universidad de Santiago de Compostela}
+            %IMPORTANTE: SI NO TENEMOS IMAGEN CORPORATIVA, DEFINIMOS SIGLAS DE LA UNIVERSIDAD
+            \newcommand{\siglasUni}{U.S.C.} 
+            %Definimos el resumen del documento completo que se mostrará en la portada
+            \newcommand{\resumen}{En este documento se recoge INSERTAMOS RESUMEN INSERTAMOS RESUMEN INSERTAMOS RESUMEN INSERTAMOS RESUMEN INSERTAMOS RESUMEN. }
+            %Definimos la ruta de la imagen corporativa que aparecerá en el encabezado de las páginas
+            \newcommand{\imagenCorporativa}{images/logoUSC.jpg}        
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%             FIN DE LA ZONA DE INTRODUCCIÓN DE METADATOS SOBRE EL DOCUMENTO              %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=======================================================
+%Definimos los comandos que nos permitirán generar correctamente la maquetación automática
+\newcommand{\ponerResumen}[1]{
+    \ifthenelse{\equal{#1}{}}{}{
+            \begin{abstract}
+                #1
+            \end{abstract}
+        }
+    }
+    
+\newcommand{\ponerImagenCorporativa}[1]{
+    \ifthenelse{\equal{#1}{}}{\LARGE\siglasUni}{
+            \begin{picture}(0,0) \put(0,-8){\includegraphics[width=25mm]{\imagenCorporativa}} \end{picture}
+        }
+    }
+%=======================================================
+%Comienza el documento
+\begin{document}
+
+%........................................
+%INICIO PORTADA
+%Indicamos que queremos que cree una portada
+\begin{titlepage}
+    {\centering
+        {\bfseries\LARGE \materia \par}
+        \vspace{0,5cm}
+        {\scshape\Large \universidad \par}
+        \vspace{2,5cm}
+        {\scshape\Huge \thetitle \par}
+         \vspace{0,5cm}
+        {\itshape\Large \subtituloDocumento \par}
+    }
+    \vspace{2cm}
+    %Insertamos un breve resumen que será mostrado en la portada
+    \ponerResumen{\resumen}
+    \vfill
+    {\Large AUTOR: \par}
+    {\Large 
+        \begin{itemize}
+            \item \theauthor
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%          En caso de necesitar más autores se definen aquí       %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %\item AUTOR 2
+            %\item AUTOR 3
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%          Fin de inserción de autores añadidos                   %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \end{itemize}
+    \par}
+    \vfill
+    {\Large FECHA: \thedate\par}
+\end{titlepage}
+ % FIN PORTADA
+ %........................................
+ 
+  %........................................
+  %INICIO DE LA PÁGINA DE ÍNDICE
+    \newpage
+    { \parskip=0.5em %Ajustamos localmente el salto de línea, para que sólo afecte al índice (por eso los corchetes)
+    
+        %Añadimos una label al índice para poder referenciarlo desde cualquier parte del documento
+        \addtocontents{toc}{\protect\hypertarget{toc}{}}
+        
+        \tableofcontents
+    }
+    
+    %FIN PÁGINA DE ÍNDICE
+    %........................................
+    
+    
+    %........................................
+    %DEFINIMOS EL ENCABEZADO AQUÍ PARA QUE NO AFECTE A PORTADA E ÍNDICE
+    %DEBE IR NEWPAGE AQUÍ PARA QUE SI EL ÍNDICE OCUPA MÁS DE UNA PÁGINA, NO META ENCABEZADO EN LA SEGUNDA Y SIGUIENTES DEL ÍNDICE
+    \newpage
+    
+    \setlength{\headheight}{12.5pt}
+    \lhead[x1]{ \ponerImagenCorporativa{\imagenCorporativa} }
+    \chead[y1]{``\thetitle''}
+    \rhead[z1]{\thedate}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \lfoot[a1]{\materia}
+    \cfoot[c1]{\myhyperlink{toc}{Volver al índice}}
+    \rfoot[e1]{\thepage}
+    \renewcommand{\footrulewidth}{0.5pt}
+    
+    \fancypagestyle{plain}{
+        \fancyhead[L]{K1}
+        \fancyhead[C]{K2}
+        \fancyhead[R]{K3}
+        \lfoot[a1]{b2}
+        \cfoot[c1]{d2}
+        \rfoot[e1]{f2}
+        \renewcommand{\footrulewidth}{0.5pt}
+        \renewcommand{\headrulewidth}{0.5pt}
+    }
+    \pagestyle{fancy}
+    %FIN DEL ENCABEZADO
+    %........................................
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%                     FIN DE LA PARTE FIJA DE MAQUETACIÓN DEL DOCUMENTO                   %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%                                 COMIENZA EL DOCUMENTO EN SÍ                             %%%
+    %%% CONSTARÁ DE PARTES, SECCIONES, SUBSECCIONES, SUBSUBSECCIONES, PÁRRAFOS Y SUBPÁRRAFOS   %%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    
+    
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%                                  INICIO DEL DOCUMENTO                                   %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%--------------------------------------------------------------------------------------------------------
+    \section{Introducción}
+    
+     \subsection*{Esto no aparece en el índice}
+
+%--------------------------------------------------------------------------------------------------------
+\newpage
+    \section[Título para el índice]{Título en el documento}
+    \label{sec:1}
+
+    Como se ve en la sección \ref{sec:1} de la página \pageref{sec:1}...
+
+
+
+    %----------------------------------------------------------------------------------------------
+    %%%                                       BIBLIOGRAFÍA                                      %%%
+    %----------------------------------------------------------------------------------------------
+\newpage
+    \appendix
+    \section{Bibliografía}
+     
+     \begin{thebibliography}{x}
+     
+     %Para hacer referencia a esta bibliografía con el típico [1], se utiliza
+     %  \cite{bib:wikipedia}
+     \bibitem{bib:wikipedia} Wikipedia, \url{https://es.wikipedia.org}, Consultado el 2-12-2020.
+     
+     
+     
+     
+     \end{thebibliography}
+    
+    
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%                                    FIN DEL DOCUMENTO                                    %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%                                    PLANTILLAS DE AYUDA                                  %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%             A CONTINUACIÓN SE MUESTRAN PLANTILLAS QUE PUEDES INCORPORAR A TU CÓDIGO     %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    %Para insertar código de programación con pie de página y una label para poder hacer referencia a ese bloque:
+    
+%      \begin{lstlisting}[language=C, caption=Con dependencias, label=conDependencias]
+% float a = 0.0;
+% for (i=0; i<N; i+=4){
+%     a=a+x[i]*y[i];     
+% }
+%         \end{lstlisting}
+    
+    
+    %Para insertar una imagen con pié de página y una etiqueta para poder hacer referencia a esa figura:
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=\textwidth]{images/densenroscadoBucle.png}
+    %     \caption{Ejemplo de desenroscado de lazos}
+    %     \label{fig:desLaz}
+    % \end{figure}
